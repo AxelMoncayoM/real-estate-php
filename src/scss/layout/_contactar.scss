@@ -1,0 +1,25 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.imagen-contacto {
+  background-image: url(../img/encuentra.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 5rem 0;
+  text-align: center;
+
+  h2,
+  p {
+    color: v.$blanco;
+  }
+
+  h2 {
+    font-size: 4rem;
+    font-weight: v.$black;
+  }
+
+  p {
+    font-size: 1.8rem;
+  }
+}
