@@ -1,59 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
-    <link rel="stylesheet" href="build/css/app.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="contenedor contenido-header">
-        <div class="barra">
-          <a href="./index.html">
-            <img src="build/img/logo.svg" alt="logo de bienes raices" />
-          </a>
-
-          <div class="nav-mobile">
-            <img src="build/img/barras.svg" alt="icono menu" />
-          </div>
-
-          <div class="derecha">
-            <img
-              class="dark-mode-boton"
-              src="build/img/dark-mode.svg"
-              alt="icono
-            dark-mode"
-            />
-            <nav class="navegacion">
-              <a href="nosotros.html">Nosotros</a>
-              <a href="anuncios.html">Anuncios</a>
-              <a href="blog.html">Blog</a>
-              <a href="contacto.html">Contacto</a>
-            </nav>
-          </div>
-          <!--barra-->
-        </div>
-
-        <h1>Guía de decoración de tu hogar</h1>
-      </div>
-    </header>
+<?php 
+  include './includes/templates/header.php';
+?>
 
     <main class="contenedor seccion contenido-centrado">
       <h1>Casa en Venta</h1>
 
       <img
-        src="build/img/destacada2.jpg"
+        src="build/img/destacada.jpg"
         alt="imagen de la propiedad"
         loading="lazy"
       />
-      <p class="info-meta">
-        Escrito el: <span>**/**/20**</span> por: <span>Admin</span>
-      </p>
 
       <div class="resumen-propiedad">
+        <p class="precio">$3,000,000</p>
+
+        <ul class="iconos-caracteristicas">
+          <li>
+            <img src="build/img/icono_wc.svg" alt="icono wc" loading="lazy" />
+            <p>3</p>
+          </li>
+
+          <li>
+            <img
+              src="build/img/icono_estacionamiento.svg"
+              alt="icono estacionamiento"
+              loading="lazy"
+            />
+            <p>3</p>
+          </li>
+
+          <li>
+            <img
+              src="build/img/icono_dormitorio.svg"
+              alt="icono dormitorio"
+              loading="lazy"
+            />
+            <p>4</p>
+          </li>
+        </ul>
+
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae dolore
           eveniet id, cupiditate nobis sapiente illo quibusdam nostrum
@@ -87,6 +72,7 @@
       </div>
       <p class="copyright">Todos los derechos reservados &copy;</p>
     </footer>
+
     <script src="build/js/app.js"></script>
   </body>
 </html>
