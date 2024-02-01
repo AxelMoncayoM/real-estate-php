@@ -17,6 +17,6 @@
       <p class="copyright">Todos los derechos reservados <?php echo "$fecha"?> &copy;</p>
     </footer>
 
-        <script src="build/js/app.js"></script>
+        <script src="/real-estate-php/build/js/app.js"></script>
   </body>
 </html>

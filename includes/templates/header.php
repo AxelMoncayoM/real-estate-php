@@ -13,17 +13,17 @@
       <div class="contenedor contenido-header">
         <div class="barra">
           <a href="./index.php">
-            <img src="build/img/logo.svg" alt="logo de bienes raices" />
+            <img src="/real-estate-php/build/img/logo.svg" alt="logo de bienes raices" />
           </a>
 
           <div class="nav-mobile">
-            <img src="build/img/barras.svg" alt="icono menu" />
+            <img src="/real-estate-php/build/img/barras.svg" alt="icono menu" />
           </div>
 
           <div class="derecha">
             <img
               class="dark-mode-boton"
-              src="build/img/dark-mode.svg"
+              src="/real-estate-php/build/img/dark-mode.svg"
               alt="icono
             dark-mode"
             />
