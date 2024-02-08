@@ -22,9 +22,15 @@
 
     //Ejecuta el codigo despues de que el usuario presiona enviar en el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        /* echo '<pre>';
+       /*  echo '<pre>';
         var_dump($_POST);
-        echo '</pre>'; */
+        echo '</pre>'; 
+        
+        echo '<pre>';
+        var_dump($_FILES);
+        echo '</pre>'; 
+
+        exit; */
 
         $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
         $precio = mysqli_real_escape_string($db, $_POST['precio']);
@@ -34,6 +40,9 @@
         $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']);
         $vendedores_id = mysqli_real_escape_string($db, $_POST['vendedor']);
         $creado = date('Y/m/d');
+
+        //Asignar files hacia una variable
+        $imagen = $_FILES['imagen'];
 
         if(!$titulo){
             $errores[] = "Debes añadir un titulo";
@@ -61,6 +70,17 @@
 
         if(!$vendedores_id){
             $errores[] = "Debes seleccionar un vendedor";
+        }
+
+        if(!$imagen['name'] || $imagen['error']){
+            $errores[] = "La imagen es obligatoria";
+        }
+
+        //Validar tamaño
+        $medida = 1000 * 100;
+
+        if($imagen['size'] > $medida){
+            $errores[] = "La imagen es muy pesada";
         }
 
         //Revisando que el arreglo de errores este vacio
@@ -98,7 +118,7 @@
             </div>
         <?php endforeach; ?>
 
-        <form action="" class="formulario" method="POST" action="/real-estate-php/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="/real-estate-php/admin/propiedades/crear.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información General</legend>
 
@@ -109,7 +129,7 @@
                 <input type="number" id="precio" name="precio" placeholder="Precio de propiedad" value="<?= "$precio" ?>">
                 
                 <label for="imagen">Imagen: </label>
-                <input type="file" id="imagen" accept="image/jpeg, image/png" >
+                <input type="file" id="imagen" accept="image/jpeg, image/png" name="imagen">
 
                 <label for="descripcion">Descripcion: </label>
                 <textarea id="descripcion" name="descripcion"><?= "$descripcion" ?></textarea>
