@@ -77,7 +77,7 @@
         }
 
         //Validar tamaño
-        $medida = 1000 * 100;
+        $medida = 1000 * 1000;
 
         if($imagen['size'] > $medida){
             $errores[] = "La imagen es muy pesada";
@@ -86,8 +86,24 @@
         //Revisando que el arreglo de errores este vacio
         if(empty($errores)){
 
+            /*Subida de archivos*/
+            
+            //Creando una carpeta
+            $carpetaImagenes = "../../imagenes";
+
+            if(!is_dir($carpetaImagenes)){
+                mkdir($carpetaImagenes); 
+            }
+
+            //Generar nombre único
+            $nombreImagen = md5(uniqid(rand(), true));
+
+            //Subir la imagen
+            move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . "/" . $nombreImagen . ".jpg");
+
+
             //Insertar en la base de datos
-            $query = " INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ('$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedores_id') ";
+            $query = " INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedores_id') ";
     
             //echo $query;
     
