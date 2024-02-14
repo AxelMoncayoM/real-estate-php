@@ -11,4 +11,8 @@
   &.error {
     background-color: rgb(187, 7, 7);
   }
+
+  &.exito {
+    background-color: v.$verde;
+  }
 }

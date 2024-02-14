@@ -111,7 +111,7 @@
     
             if($resultado){
                 //redireccionar al usuario
-                header("Location: /real-estate-php/admin/index.php");//Esto solo funciona si no hay HTML previo
+                header("Location: /real-estate-php/admin/index.php?resultado=1");//Esto solo funciona si no hay HTML previo
             }
         }
 
