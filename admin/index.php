@@ -25,6 +25,8 @@
 
       <?php if(intval($resultado) === 1): ?>
         <p class="alerta exito">Creado Correctamente</p>
+      <?php elseif(intval($resultado) === 2): ?>
+        <p class="alerta exito">Actualizado Correctamente</p>
       <?php endif; ?>
 
       <a href="/real-estate-php/admin/propiedades/crear.php" class="boton boton-verde">Crear Propiedad</a>

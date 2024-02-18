@@ -92,9 +92,9 @@
             $errores[] = "Debes seleccionar un vendedor";
         }
 
-        if(!$imagen['name'] || $imagen['error']){
+        /* if(!$imagen['name'] || $imagen['error']){
             $errores[] = "La imagen es obligatoria";
-        }
+        } */
 
         //Validar tamaño
         $medida = 1000 * 1000;
@@ -123,7 +123,7 @@
 
 
             //Insertar en la base de datos
-            $query = " INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedores_id') ";
+            $query = "UPDATE propiedades SET titulo = '$titulo', precio = '$precio', descripcion = '$descripcion', habitaciones = $habitaciones, wc = $wc, estacionamiento = $estacionamiento, vendedores_id = $vendedores_id WHERE id = $id";
     
             //echo $query;
     
@@ -131,7 +131,7 @@
     
             if($resultado){
                 //redireccionar al usuario
-                header("Location: /real-estate-php/admin/index.php?resultado=1");//Esto solo funciona si no hay HTML previo
+                header("Location: /real-estate-php/admin/index.php?resultado=2");//Esto solo funciona si no hay HTML previo
             }
         }
 
@@ -154,7 +154,7 @@
             </div>
         <?php endforeach; ?>
 
-        <form class="formulario" method="POST" action="/real-estate-php/admin/propiedades/crear.php" enctype="multipart/form-data">
+        <form class="formulario" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información General</legend>
 
