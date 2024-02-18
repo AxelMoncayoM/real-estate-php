@@ -145,7 +145,7 @@
                 <input type="number" id="precio" name="precio" placeholder="Precio de propiedad" value="<?= "$precio" ?>">
                 
                 <label for="imagen">Imagen: </label>
-                <input type="file" id="imagen" accept="image/jpeg, image/png" name="imagen">
+                <input type="file" id="imagen" accept="image/jpeg" name="imagen">
 
                 <label for="descripcion">Descripcion: </label>
                 <textarea id="descripcion" name="descripcion"><?= "$descripcion" ?></textarea>

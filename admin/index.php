@@ -50,7 +50,7 @@
             <td><?= "$" . "$propiedad[precio]" ?></td>
             <td>
               <a href="#" class="boton-rojo-block">Eliminar</a>
-              <a href="#" class="boton-verde-block">Actualizar</a>
+              <a href="/real-estate-php/admin/propiedades/actualizar.php?id=<?="$propiedad[id]"?>" class="boton-verde-block">Actualizar</a>
             </td>
           </tr>
           <?php endwhile; ?>
