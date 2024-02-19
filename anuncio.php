@@ -1,24 +1,50 @@
 <?php 
+
+  $id = $_GET['id'];
+  $id = filter_var($id, FILTER_VALIDATE_INT);
+
+  if(!$id){
+    header("Location: /real-estate-php/index.php");
+  }
+
+    //importar la base de datos
+    require("includes/config/database.php");
+    $db = conectar_db();
+
+
+    //consultar
+    $query = "SELECT * FROM propiedades WHERE id = $id";
+
+
+    // obtener resultados
+    $resultado = mysqli_query($db, $query);
+
+    if(!$resultado->num_rows){
+      header("Location: /real-estate-php/index.php");
+    }
+
+    $propiedad = mysqli_fetch_assoc($resultado);
+
    require 'includes/funciones.php';
    incluirTemplate('header');
 ?>
 
     <main class="contenedor seccion contenido-centrado">
-      <h1>Casa en Venta</h1>
+      <h1><?= "$propiedad[titulo]" ?></h1>
 
       <img
-        src="build/img/destacada.jpg"
+        src="imagenes/<?php echo "$propiedad[imagen]" . ".jpg"?>"
         alt="imagen de la propiedad"
         loading="lazy"
       />
 
       <div class="resumen-propiedad">
-        <p class="precio">$3,000,000</p>
+        <p class="precio">$<?= "$propiedad[precio]" ?></p>
 
         <ul class="iconos-caracteristicas">
           <li>
             <img src="build/img/icono_wc.svg" alt="icono wc" loading="lazy" />
-            <p>3</p>
+            <p><?= "$propiedad[wc]" ?></p>
           </li>
 
           <li>
@@ -27,7 +53,7 @@
               alt="icono estacionamiento"
               loading="lazy"
             />
-            <p>3</p>
+            <p><?= "$propiedad[estacionamiento]" ?></p>
           </li>
 
           <li>
@@ -36,30 +62,19 @@
               alt="icono dormitorio"
               loading="lazy"
             />
-            <p>4</p>
+            <p><?= "$propiedad[habitaciones]" ?></p>
           </li>
         </ul>
 
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae dolore
-          eveniet id, cupiditate nobis sapiente illo quibusdam nostrum
-          temporibus ipsum incidunt obcaecati culpa quo fugiat officia sunt
-          eaque! Tenetur, iste! Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Maxime voluptate rerum molestias quidem quis
-          laudantium ad excepturi natus corrupti iste fugit quisquam voluptas
-          esse animi tempore perferendis, sunt et dolorem?
+          <?= "$propiedad[descripcion]" ?>
         </p>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          itaque suscipit culpa quia ullam aliquam recusandae quae repudiandae
-          quisquam. Deleniti voluptas unde aut quibusdam molestias, reiciendis
-          quisquam nihil modi aperiam. Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Dolore culpa natus illum minus impedit libero, non
-          dolorem commodi, explicabo magnam rerum mollitia accusamus nostrum
-          nulla in perferendis possimus consectetur voluptatum.
-        </p>
       </div>
     </main>
 
-     <?php incluirTemplate("footer"); ?>
+     <?php 
+     mysqli_close($db);
+
+     incluirTemplate("footer"); 
+     ?>

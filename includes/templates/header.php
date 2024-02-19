@@ -39,7 +39,7 @@
         </div>
 
         <?php if($inicio){ ?>
-            <h1>Venta de casas y departamentos de lujo</h1>
+            <h1>Venta de Casas y Departamentos de Super Lujo</h1>
         <?php } ?>
       </div>
     </header>
