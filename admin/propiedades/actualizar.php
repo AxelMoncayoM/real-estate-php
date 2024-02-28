@@ -1,5 +1,12 @@
 
 <?php 
+    require '../../includes/funciones.php';
+    $auth = estaAutenticado();
+
+    if(!$auth){
+        header("Location: /real-estate-php/index.php");
+    }
+
 
   //Validando el id
   $id = $_GET['id'];
@@ -148,7 +155,6 @@
     }
 
 
-    require '../../includes/funciones.php';
     incluirTemplate('header');
 ?>
 

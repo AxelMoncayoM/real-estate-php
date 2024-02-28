@@ -1,4 +1,11 @@
 <?php 
+    require '../../includes/funciones.php';
+    
+    $auth = estaAutenticado();
+
+    if(!$auth){
+        header("Location: /real-estate-php/index.php");
+    }
     //base de datos
     require("../../includes/config/database.php");
     $db = conectar_db();
@@ -119,7 +126,6 @@
     }
 
 
-    require '../../includes/funciones.php';
     incluirTemplate('header');
 ?>
 
